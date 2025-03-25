@@ -57,14 +57,23 @@ const storage = multer.diskStorage({
 
     const upload = multer({ storage: storage })
 
+    const pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }  // Needed for Railway
+    })
+
+    pool.connect()
+    .then(() => console.log("Connected to PostgreSQL!"))
+    .catch(err => console.error("Database connection error", err));
+
 // PostgreSQL connection
-const pool = new Pool({
+/* const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'excel_data',
   password: 'TCSBANCS',
   port: 5432,
-});
+}); */
 
 // Set up EJS for templates
 app.set('view engine', 'ejs');
