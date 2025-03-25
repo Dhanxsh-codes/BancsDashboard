@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DASHBOARD UPLOAD</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 2rem;
+    }
+    .container {
+      max-width: 800px;
+    }
+    .card {
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<%- include ('partials/header.ejs') %>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header bg-success text-white">
+        <h5 class="card-title mb-0">Upload Successful!</h5>
+      </div>
+      <div class="card-body">
+        <p>Your Dashboard file <strong><%= fileName %></strong> has been successfully uploaded and stored in the database.</p>
+        <p>Table name: <strong><%= tableName %></strong></p>
+        
+        <div class="d-flex gap-2 mt-4">
+          <a href="/data/<%= tableName %>" class="btn btn-primary">View Data</a>
+          <a href="/" class="btn btn-secondary">Upload Another File</a>
+          <a href="/tables" class="btn btn-info">View All Dashboards</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include ('partials/footer.ejs') %>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
